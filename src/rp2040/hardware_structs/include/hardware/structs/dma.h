@@ -188,7 +188,10 @@ typedef struct {
 
 typedef struct {
     struct dma_debug_hw_channel {
-        io_rw_32 ctrdeq;
+        union {
+            io_rw_32 ctdreq;
+            io_rw_32 ctrdeq;
+        };
         io_ro_32 tcr;
         uint32_t pad[14];
     } ch[NUM_DMA_CHANNELS];
